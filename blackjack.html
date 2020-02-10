@@ -8,20 +8,35 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet">
+
     <style>
     
     html {
-      background: url(imgs/woodpanel.jpg);
-      background-size: stretch;
+      background-color: gold;
+    }
+
+    #title{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: gold;
+      margin: 0px;
+      padding: 10px;
+      font-family: 'Bree Serif', serif;
+      font-size: 60px;
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: white;
+      border-bottom: black solid 5px;
+
     }
 
     #table{
       background: url(imgs/blackjackfelt.jpg);
       background-size: cover;
       display: flex;
-      justify-content: left;
-      align-items: left;
+      justify-content: center;
+      align-items: center;
       flex-direction: column;
       margin: 0px;
       padding: 10px;
@@ -41,23 +56,56 @@
       border: gold solid 3px;
       border-radius: 15px;
     }
+
+    #DandP{
+      color: black;
+      font-size: 45px;
+      font-family: 'Bree Serif', serif;
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: white;
+    }
+    
+    #deal-button{
+      margin: 10px;
+      border: gold solid 3px;
+      border-radius: 15px;
+      padding: 5px;
+    }
+
+    #hit-button{
+      margin: 10px;
+      border: gold solid 3px;
+      border-radius: 15px;
+      padding: 5px;
+    }
+
+    #stand-button{
+      margin: 10px;
+      border: gold solid 3px;
+      border-radius: 15px;
+      padding: 5px;
+    }
+    .hand{
+      height: 185px;
+      margin: 5px
+    }
     </style>
   </head>
   <body>
-      
+    <h1 id="title">Black Jack</h1>
     <div id="table">
-
         <div id="messages"></div>
         
-        <label>Dealer: </label>
+        <label id="DandP">Dealer: </label>
         
         <label id="dealer-points" class="points"></label>
         
         <div id="dealer-hand" class="hand">
+            <!-- <img src="JPEG/AS.jpg"><img> -->
         
         </div>
         
-        <label>Player: </label>
+        <label id="DandP">Player: </label>
         
         <label id="player-points" class="points"></label>
         
