@@ -26,21 +26,21 @@
       font-family: 'Bree Serif', serif;
       font-size: 60px;
       color: white;
-      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-width: 3px;
       -webkit-text-stroke-color: black;
-      border-bottom: black double 20px;
+      border-bottom: black double 30px;
 
     }
 
     #red {
       color: red;
-      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-width: 3px;
       -webkit-text-stroke-color: black;
     }
 
     #black {
       color: black;
-      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-width: 3px;
       -webkit-text-stroke-color: red;
     }
 
@@ -58,21 +58,21 @@
 
     #dealer-hand {
     width: 70%;
-    height: 215px;
-    border: white double 10px;
+    height: 223px;
+    border: black double 15px;
     border-radius: 15px;
     }
 
     #player-hand{
       width: 70%;
-      height: 215px;
-      border: white double 10px;
+      height: 223px;
+      border: black double 15px;
       border-radius: 15px;
     }
 
-    #DandP{
+    .DandP{
       color: white;
-      font-size: 45px;
+      font-size: 55px;
       font-family: 'Bree Serif', serif;
       -webkit-text-stroke-width: 2px;
       -webkit-text-stroke-color: black;
@@ -85,7 +85,7 @@
       color: white;
       border: white solid 3px;
       border-radius: 15px;
-      padding: 5px;
+      padding: 7px;
       font-family: 'Bree Serif', serif;
     }
 
@@ -96,7 +96,7 @@
       color: white;
       border: white solid 3px;
       border-radius: 15px;
-      padding: 5px;
+      padding: 7px;
       font-family: 'Bree Serif', serif;
     }
 
@@ -107,13 +107,26 @@
       color: white;
       border: white solid 3px;
       border-radius: 15px;
-      padding: 5px;
+      padding: 7px;
       font-family: 'Bree Serif', serif;
     }
     .hand{
       height: 185px;
       margin: 5px
     }
+
+    #footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: whitesmoke;
+      border-top: black double 30px;
+    }
+
+    .overlayhidden {
+      visibility: hidden;
+    }
+
     </style>
   </head>
   <body>
@@ -125,7 +138,7 @@
     <div id="table">
         <div id="messages"></div>
         
-        <label id="DandP">Dealer: </label>
+        <label id="dealer" class="DandP">Dealer: </label>
         
         <label id="dealer-points" class="points"></label>
         
@@ -133,7 +146,7 @@
         
         </div>
         
-        <label id="DandP">Player: </label>
+        <label id="player" class="DandP">Player: </label>
         
         <label id="player-points" class="points"></label>
         
@@ -151,7 +164,8 @@
         
         </div>
         
-        </div>
+      </div>
+      <div id="footer"></div>
         
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
