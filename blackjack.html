@@ -13,22 +13,35 @@
     <style>
     
     html {
-      background-color: gold;
+      background-color: whitesmoke;
     }
 
     #title{
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: gold;
+      background-color: whitesmoke;
       margin: 0px;
       padding: 10px;
       font-family: 'Bree Serif', serif;
       font-size: 60px;
-      -webkit-text-stroke-width: 1px;
-      -webkit-text-stroke-color: white;
-      border-bottom: black solid 5px;
+      color: white;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: black;
+      border-bottom: black double 20px;
 
+    }
+
+    #red {
+      color: red;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: black;
+    }
+
+    #black {
+      color: black;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: red;
     }
 
     #table{
@@ -40,50 +53,62 @@
       flex-direction: column;
       margin: 0px;
       padding: 10px;
-      color: white;
+      color: whitesmoke;
     }
 
     #dealer-hand {
     width: 70%;
-    height: 200px;
-    border: gold solid 3px;
+    height: 215px;
+    border: white double 10px;
     border-radius: 15px;
     }
 
     #player-hand{
       width: 70%;
-      height: 200px;
-      border: gold solid 3px;
+      height: 215px;
+      border: white double 10px;
       border-radius: 15px;
     }
 
     #DandP{
-      color: black;
+      color: white;
       font-size: 45px;
       font-family: 'Bree Serif', serif;
-      -webkit-text-stroke-width: 1px;
-      -webkit-text-stroke-color: white;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: black;
     }
     
     #deal-button{
       margin: 10px;
-      border: gold solid 3px;
+      width: 100px;
+      background-color: black;
+      color: white;
+      border: white solid 3px;
       border-radius: 15px;
       padding: 5px;
+      font-family: 'Bree Serif', serif;
     }
 
     #hit-button{
       margin: 10px;
-      border: gold solid 3px;
+      width: 100px;
+      background-color: black;
+      color: white;
+      border: white solid 3px;
       border-radius: 15px;
       padding: 5px;
+      font-family: 'Bree Serif', serif;
     }
 
     #stand-button{
       margin: 10px;
-      border: gold solid 3px;
+      width: 100px;
+      background-color: black;
+      color: white;
+      border: white solid 3px;
       border-radius: 15px;
       padding: 5px;
+      font-family: 'Bree Serif', serif;
     }
     .hand{
       height: 185px;
@@ -92,7 +117,11 @@
     </style>
   </head>
   <body>
-    <h1 id="title">Black Jack</h1>
+    <h1 id="title">
+      <p id="black">♠♣</p>
+      <p id=>Black Jack</p>
+      <p id="red">♥♦</p>
+    </h1>
     <div id="table">
         <div id="messages"></div>
         
@@ -101,7 +130,6 @@
         <label id="dealer-points" class="points"></label>
         
         <div id="dealer-hand" class="hand">
-            <!-- <img src="JPEG/AS.jpg"><img> -->
         
         </div>
         

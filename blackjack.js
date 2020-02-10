@@ -54,10 +54,14 @@ let deck = [{suit: "Diamonds", value: 2, imageURL: "JPEG/2D.jpg"},
 {suit: "Spades", value: 10, imageURL: "JPEG/QS.jpg"},
 {suit: "Spades", value: 10, imageURL: "JPEG/KS.jpg"}]
 
+let dealerValue = 0;
+let playerValue = 0;
+dealerHandValue = [];
+playerHandValue = [];
 
 console.log(deck);
 
-//shuffle function
+//functions
 function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
@@ -66,19 +70,29 @@ function shuffleArray(array) {
     array[j] = temp;
     }
     return array;
-    }
-//////
+    };
 
-shuffleArray(deck);
+function addingInitialValues() {
+    dealerValue = dealerHandValue[0] + dealerHandValue[1];
+    playerValue = playerHandValue[0] + playerHandValue[1];
+}
 
-document.getElementById("deal-button").addEventListener("click", function(e){
+function addingPlayerHitValues() {
+    let hitValue = playerValue + playerHandValue[0]
+    playerValue = hitValue
+}
+
+function deal() {
+    shuffleArray(deck);
     let deal1 = document.createElement("IMG");
         deal1.src = deck[0].imageURL;
         deal1.className = "hand"
+        dealerHandValue.push(deck[0].value);
         deck.shift();
     let deal2 = document.createElement("IMG");
         deal2.src = deck[0].imageURL;
         deal2.className = "hand"
+        dealerHandValue.push(deck[0].value);
         deck.shift();
     let dealer1 = document.getElementById("dealer-hand");
             dealer1.append(deal1, deal2);
@@ -87,22 +101,49 @@ document.getElementById("deal-button").addEventListener("click", function(e){
     let play1 = document.createElement("IMG");
         play1.src = deck[0].imageURL;
         play1.className = "hand"
+        playerHandValue.push(deck[0].value);
         deck.shift();
     let play2 = document.createElement("IMG");
         play2.src = deck[0].imageURL;
         play2.className = "hand"
+        playerHandValue.push(deck[0].value);
         deck.shift();
     let player1 = document.getElementById("player-hand");
             player1.append(play1, play2);
+    addingInitialValues();
+};
+
+function hit() {
+    playerHandValue = [];
+    let playhit = document.createElement("IMG");
+    playhit.src = deck[0].imageURL;
+    playhit.className = "hand";
+    playerHandValue.push(deck[0].value);
+    deck.shift();
+    let playerhit = document.getElementById("player-hand");
+            playerhit.append(playhit);
+    console.log(playhit);
+    addingPlayerHitValues();
+};
+
+function stand() {
+
+};
+//////
+
+///event listeners
+document.getElementById("deal-button").addEventListener("click", function(e){
+    deal();
+    console.log(dealerValue);
+    console.log(playerValue);
 
 });
 
 document.getElementById("hit-button").addEventListener("click", function(e){
-
-    
-})
+    hit();
+    console.log(playerValue)
+});
 
 document.getElementById("stand-button").addEventListener("click", function(e){
-
-    
+    stand();
 })
