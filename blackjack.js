@@ -66,13 +66,13 @@ let dealerAceCount = 0;
 let victory = '';
 
 ////////////Functions
-function revealDealer() {
+function revealDealer() { //sets one of the dealers cards face down
     dealerValueDisplayTotal.innerHTML = 'Dealer: ' + dealerValue;
     let dealtFaceDown = document.getElementById('facedown');
     dealtFaceDown.src = faceDown[0];
 }
 
-function displayWin() {
+function displayWin() { //displays win overlay when player wins
     let overlayDiv = document.createElement('div');
     overlayDiv.setAttribute('id', 'overlay');
     overlayDiv.setAttribute(
@@ -83,7 +83,7 @@ function displayWin() {
     document.body.appendChild(overlayDiv);
 }
 
-function displayBust() {
+function displayBust() { //displays the bust overlay when the player busts
     var overlayDiv = document.createElement('div');
     overlayDiv.setAttribute('id', 'overlay');
     overlayDiv.setAttribute(
@@ -94,7 +94,7 @@ function displayBust() {
     document.body.appendChild(overlayDiv);
 }
 
-function displayLoss() {
+function displayLoss() { //displays the loss overlay when the player loses
     var overlayDiv = document.createElement('div');
     overlayDiv.setAttribute('id', 'overlay');
     overlayDiv.setAttribute(
@@ -105,7 +105,7 @@ function displayLoss() {
     document.body.appendChild(overlayDiv);
 }
 
-function displayTie() {
+function displayTie() { //displays the tie overlay when the player and dealer tie
     var overlayDiv = document.createElement('div');
     overlayDiv.setAttribute('id', 'overlay');
     overlayDiv.setAttribute(
@@ -116,7 +116,7 @@ function displayTie() {
     document.body.appendChild(overlayDiv);
 }
 
-function shuffleArray(array) {
+function shuffleArray(array) { //shuffles the deck(array) of cards
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
         var temp = array[i];
@@ -125,11 +125,11 @@ function shuffleArray(array) {
     }
     return array;
 }
-function addingInitialValues() {
+function addingInitialValues() { // adds the values of the cards initially dealt when the game is started
     dealerValue = dealerHandValue[0] + dealerHandValue[1];
     playerValue = playerHandValue[0] + playerHandValue[1];
 }
-function addingPlayerHitValues() {
+function addingPlayerHitValues() { // adds the value of the hit card to the players total value when the player hits
     let hitTotal = playerValue + playerHandValue[0];
     playerValue = hitTotal;
     if (playerHandValue[0] == 11 && playerValue >= 11) {
@@ -137,7 +137,7 @@ function addingPlayerHitValues() {
     }
 }
 
-function deal() {
+function deal() { // deals the cards to the player and dealer
     shuffleArray(deck);
     dealerHandValue = [];
     playerHandValue = [];
@@ -183,7 +183,7 @@ function deal() {
     playerValueDisplayTotal.innerHTML = 'Player: ' + playerValue;
 }
 
-function hit() {
+function hit() { // allows the player to call for a hit
     playerHandValue = [];
     let playhit = document.createElement('IMG');
     playhit.src = deck[0].imageURL;
@@ -196,7 +196,7 @@ function hit() {
     playerValueDisplayTotal.innerHTML = 'Player: ' + playerValue;
 }
 
-function dealerHit() {
+function dealerHit() { //allows the dealer to hit which reveals the card that was initially not showing its value
     dealerHandValue = [];
     while (dealerValue < 17) {
         shuffleArray(deck);
@@ -215,7 +215,7 @@ function dealerHit() {
     dealerValueDisplayTotal.innerHTML = 'Dealer: ' + dealerValue;
 }
 
-function checkValue() {
+function checkValue() { // checks for wins, ties, busts, and losses between the player and the dealer
     dealerHit();
     revealDealer();
     if (playerValue <= 21 && dealerValue <= 21) {
@@ -240,21 +240,25 @@ function endGame() {
 
 ////// Event Listenters
 
+//adds functionallity to the deal button
 document.getElementById('deal-button').addEventListener('click', function (e) {
     console.log(faceDown);
     deal();
     endGame();
 });
 
+//adds functionallity to the hit button
 document.getElementById('hit-button').addEventListener('click', function (e) {
     hit();
     endGame();
 });
 
+//adds functionallity to the stand button
 document.getElementById('stand-button').addEventListener('click', function (e) {
     checkValue();
 });
 
+//adds functionallity to the new game button
 document.getElementById('new-game').addEventListener('click', function (e) {
     location.reload();
     return false;
