@@ -132,7 +132,13 @@ function displayDealerValue() {
 function deal() {
     shuffleArray(deck);
 
-    
+    try{
+        let t = document.getElementById('overlay');
+        t.setAttribute("class", "overlayhidden")
+        }
+        catch{}
+
+        console.log("here");
 
     dealerHandValue = [];
     playerHandValue = [];
@@ -187,15 +193,6 @@ function deal() {
     addingInitialValues();
     displayPlayerValue();
     displayDealerValue();
-
-    try{
-        let t = document.getElementById('overlay');
-    
-        t.setAttribute("class", "overlayhidden")
-        }
-        catch{}
-
-        console.log("here");
 };
 
 function hit() {
@@ -215,25 +212,25 @@ function hit() {
 function checkValue() {
     if (playerValue <= 21 && dealerValue <= 21) {
       //dealer method
-      if (playerValue > dealerValue) {
+    if (playerValue > dealerValue) {
         displayWin();
-      } else if (dealerValue > playerValue) {
+    } else if (dealerValue > playerValue) {
         displayLoss();
-      } else {
+    } else {
         displayTie();
-      }
+        }
     } else if (playerValue > 21) {
-      displayLoss();
+        displayLoss();
     } else if (dealerValue > 21) {
-      displayWin();
+        displayWin();
     };
-  };
+};
 
 function endGame() {
     if (playerValue >= 21) {
-      checkValue();
+        checkValue();
     };
-  };  
+};  
 //////
 
 ///event listeners
