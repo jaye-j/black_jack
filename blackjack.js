@@ -61,10 +61,8 @@ let dealerAceCount = 0;
 dealerHandValue = [];
 playerHandValue = [];
 
-console.log(deck);
-
 //functions
-function displayTie() {
+function displayTie() { //displays an overlay when the player and dealer tie
     let overlayDiv = document.createElement('div');
     overlayDiv.setAttribute('id', 'overlay');
     overlayDiv.setAttribute(
@@ -75,7 +73,7 @@ function displayTie() {
     document.body.appendChild(overlayDiv);
 };
 
-function displayWin() {
+function displayWin() { //displays an overlay for when the player wins
     let overlayDiv = document.createElement('div');
     overlayDiv.setAttribute('id', 'overlay');
     overlayDiv.setAttribute(
@@ -86,7 +84,7 @@ function displayWin() {
     document.body.appendChild(overlayDiv);
 };
 
-function displayLoss() {
+function displayLoss() { //displays an overlay for when the player loses
     let overlayDiv = document.createElement('div');
     overlayDiv.setAttribute('id', 'overlay');
     overlayDiv.setAttribute(
@@ -97,7 +95,7 @@ function displayLoss() {
     document.body.appendChild(overlayDiv);
 };
 
-function shuffleArray(array) {
+function shuffleArray(array) { //shuffles the deck of cards at random
     for (var i = array.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
     var temp = array[i];
@@ -107,39 +105,37 @@ function shuffleArray(array) {
     return array;
 };
 
-function addingInitialValues() {
+function addingInitialValues() { //adds values of the cards in the initial deal for both the dealer and player
     dealerValue = dealerHandValue[0] + dealerHandValue[1];
     playerValue = playerHandValue[0] + playerHandValue[1];
 };
 
-function addingPlayerHitValues() {
+function addingPlayerHitValues() { //adds card value of a hit to the value of the players hand
     let hitValue = playerValue + playerHandValue[0]
     playerValue = hitValue
-    if (playerHandValue[0] == 11 && playerValue >= 11){
+    if (playerHandValue[0] == 11 && playerValue >= 11){ //adds logic for Ace value of either 11 or 1
         playerValue = playerValue - 10;
     };
 };
 
-function displayPlayerValue() {
+function displayPlayerValue() { //displays the total value of cards in players hand
     playerValueDisplayTotal.innerHTML = "Player: " + playerValue;
 };
 
-function displayDealerValue() {
+function displayDealerValue() { //displays the total value of cards in dealers hand
     dealerValueDisplayTotal.innerHTML = "Dealer: " + dealerValue;
 };
 
 
-function deal() {
+function deal() { //this first shuffles the deck at the start of a game and deals the first cards to the dealer and the player
     shuffleArray(deck);
-
+///trying to make overlay disappear when new deal is started... only works once...
     try{
         let t = document.getElementById('overlay');
         t.setAttribute("class", "overlayhidden")
         }
         catch{}
-
-        console.log("here");
-
+///
     dealerHandValue = [];
     playerHandValue = [];
     let dealer1 = document.getElementById('dealer-hand');
@@ -148,54 +144,32 @@ function deal() {
     player1.innerHTML = '';
     let deal1 = document.createElement("IMG");
         deal1.src = deck[0].imageURL;
-        deal1.className = "hand"
-        if (deck[0].value == 11){
-            dealerHandValue.push(deck[0].value);
-            dealerAceCount++;
-        }else{
-            dealerHandValue.push(deck[0].value);
-        };
+        deal1.className = "hand";
+        dealerHandValue.push(deck[0].value);
         deck.shift();
     let deal2 = document.createElement("IMG");
         deal2.src = deck[0].imageURL;
-        deal2.className = "hand"
-        if (deck[0].value == 11){
-            dealerHandValue.push(deck[0].value);
-            dealerAceCount++;
-        }else{
-            dealerHandValue.push(deck[0].value);
-        };
+        deal2.className = "hand";
+        dealerHandValue.push(deck[0].value);
         deck.shift();
-            dealer1.append(deal1, deal2);
-    console.log(deal1);
-
+        dealer1.append(deal1, deal2);
     let play1 = document.createElement("IMG");
         play1.src = deck[0].imageURL;
-        play1.className = "hand"
-        if (deck[0].value == 11){
-            playerHandValue.push(deck[0].value);
-            playerAceCount++;
-        }else{
-            playerHandValue.push(deck[0].value);
-        };
+        play1.className = "hand";
+        playerHandValue.push(deck[0].value);
         deck.shift();
     let play2 = document.createElement("IMG");
         play2.src = deck[0].imageURL;
-        play2.className = "hand"
-        if (deck[0].value == 11){
-            playerHandValue.push(deck[0].value);
-            playerAceCount++;
-        }else{
-            playerHandValue.push(deck[0].value);
-        };
+        play2.className = "hand";
+        playerHandValue.push(deck[0].value);
         deck.shift();
-            player1.append(play1, play2);
+        player1.append(play1, play2);
     addingInitialValues();
     displayPlayerValue();
     displayDealerValue();
 };
 
-function hit() {
+function hit() { //allows the player to hit the 'hit' button to get a card added to their hand
     playerHandValue = [];
     let playhit = document.createElement("IMG");
     playhit.src = deck[0].imageURL;
@@ -209,7 +183,7 @@ function hit() {
     displayPlayerValue();
 };
 
-function checkValue() {
+function checkValue() { // checks the values of hands to determine win, loss, and tie
     if (playerValue <= 21 && dealerValue <= 21) {
       //dealer method
     if (playerValue > dealerValue) {
@@ -226,7 +200,7 @@ function checkValue() {
     };
 };
 
-function endGame() {
+function endGame() { // checks the values of hands to determine win, loss, and tie
     if (playerValue >= 21) {
         checkValue();
     };
@@ -246,5 +220,5 @@ document.getElementById("hit-button").addEventListener("click", function(e){
 });
 
 document.getElementById("stand-button").addEventListener("click", function(e){
-    checkValue()
-})
+    checkValue();
+});
