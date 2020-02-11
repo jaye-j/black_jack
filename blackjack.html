@@ -136,10 +136,18 @@
       align-items: center;
       background-color: whitesmoke;
       border-top: black double 30px;
+      height: 100px;
     }
 
     .overlayhidden {
       visibility: hidden;
+    }
+
+    .tableback{
+      background-color: #fff;
+      background-image: linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%), linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%);
+      background-size: 210px 210px;
+      background-position: 0 0, 100px 100px;
     }
 
     </style>
@@ -159,17 +167,13 @@
         
         <label id="dealer-points" class="points"></label>
         
-        <div id="dealer-hand" class="hand-img">
-        
-        </div>
+        <div id="dealer-hand" class="hand-img tableback"></div>
         
         <label id="player" class="DandP">Player: </label>
         
         <label id="player-points" class="points"></label>
         
-        <div id="player-hand" class="hand-img">
-        
-        </div>
+        <div id="player-hand" class="hand-img tableback"></div>
         
         <div class="buttons">
         
@@ -185,7 +189,7 @@
           <button id="new-game">New Game</button>
         </div>
         
-      </div>
+    </div>
       <div id="footer"></div>
         
     <!-- Optional JavaScript -->
